@@ -18,11 +18,22 @@ $(document).on('mouseenter', '.product-img-thumb', function(){
 	var data_img_id = $(this).attr('data-img-id');
 	$('.product-img').hide();
 	$('#product-img-'+data_img_id).show();
-});
+	});
 	$('.add-to-cart-form').on('submit', function(){
 
 		// update quantity button listener
-$('.update-quantity-form').on('submit', function(){
+	
+		// info is in the table / single product layout
+		var id = $(this).find('.product-id').text();
+		var quantity = $(this).find('.cart-quantity').val();
+
+		// redirect to add_to_cart.php, with parameter values to process the request
+		window.location.href = "add_to_cart.php?id=" + id + "&quantity=" + quantity;
+		return false;
+
+	});
+
+	$('.update-quantity-form').on('submit', function(){
 
 	// get basic information for updating the cart
 	var id = $(this).find('.product-id').text();
@@ -31,14 +42,6 @@ $('.update-quantity-form').on('submit', function(){
 	// redirect to update_quantity.php, with parameter values to process the request
 	window.location.href = "update_quantity.php?id=" + id + "&quantity=" + quantity;
 	return false;
-});
-		// info is in the table / single product layout
-		var id = $(this).find('.product-id').text();
-		var quantity = $(this).find('.cart-quantity').val();
-
-		// redirect to add_to_cart.php, with parameter values to process the request
-		window.location.href = "add_to_cart.php?id=" + id + "&quantity=" + quantity;
-		return false;
 	});
 });
 </script>
