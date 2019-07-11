@@ -34,7 +34,8 @@ $stmt_product_image = $product_image->readByProductId();
 
 // count all relatd product image
 $num_product_image = $stmt_product_image->rowCount();
-
+// include page header HTML
+include_once 'layout_header.php';
 echo "<div class='col-md-1'>";
 	// if count is more than zero
 	if($num_product_image>0){
@@ -118,8 +119,7 @@ echo "<div class='col-md-2'>";
 		echo "</form>";
 	}
 echo "</div>";
-// include page header HTML
-include_once 'layout_header.php';
+
 
 // content will be here
 
